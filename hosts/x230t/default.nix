@@ -1,4 +1,7 @@
 { pkgs, config, lib, inputs, ... }:
+
+with lib;
+
 {
   imports = [
     inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x230
@@ -40,7 +43,7 @@
   # Console settings
   console = {
     font = "ter-116n";
-    ackages = with pkgs; [ terminus_font ];
+    packages = with pkgs; [ terminus_font ];
   };
   
   # Configure keymap in X11

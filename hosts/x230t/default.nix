@@ -47,7 +47,7 @@
   programs.pantheon-tweaks.enable = true;
 
   # Configure keymap in X11
-  services.xserver.layout = "de";
+  services.xserver.layout = "eu";
   # services.xserver.xkbOptions = "eurosign:e";
 
   # Enable CUPS to print documents.

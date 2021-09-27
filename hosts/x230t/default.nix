@@ -12,10 +12,10 @@ with lib;
   modules = {
     desktop = {
       pantheon.enable = true;
-    };
-    browsers = {
-      default = "vivaldi";
-      vivaldi.enable = true;
+      browsers = {
+        default = "vivaldi";
+        vivaldi.enable = true;
+      };
     };
     editors = {
       default = "nano";

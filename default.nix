@@ -38,13 +38,29 @@ with lib.my;
     };
   system.configurationRevision = with inputs; mkIf (self ? rev) self.rev;
 
-  # Just the bear necessities...
+  # Necessities...
   environment.systemPackages = with pkgs; [
     cached-nix-shell
     git
+    gnumake
+    nano
+    sshfs
+    unzip
     vim
     wget
-    gnumake
-    unzip
+    zstd
+
+    # Support for more filesystems
+    btrfs-progs
+    dosfstools
+    exfat
+    f2fs-tools
+    jfsutils
+    mtools
+    nilfs-utils
+    ntfs3g
+    reiserfsprogs
+    udftools
+    xfsprogs
   ];
 }

@@ -40,7 +40,7 @@ with lib.my;
           name = if elem user [ "" "root" ] then "roland" else user;
       in {
         inherit name;
-        description = "The primary user account";
+        # description = "The primary user account";
         extraGroups = [ "wheel" "video" "networkmanager" ];
         isNormalUser = true;
         createHome = true;

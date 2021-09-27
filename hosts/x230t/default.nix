@@ -13,6 +13,14 @@ with lib;
     desktop = {
       pantheon.enable = true;
     };
+    browsers = {
+      default = "vivaldi";
+      vivaldi.enable = true;
+    };
+    editors = {
+      default = "nano";
+      emacs.enable = true;
+    };
   };
   
   # Use the systemd-boot EFI boot loader.
@@ -59,10 +67,6 @@ with lib;
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    #   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    wget
-    vivaldi
-    git
     auto-cpufreq
   ];
 

@@ -26,6 +26,7 @@ in {
     programs.pantheon-tweaks.enable = true;
 
     environment.systemPackages = with pkgs; [
+      gnome.dconf-editor
       pantheon.elementary-files
       # QPlatformTheme for a better Qt application inclusion in GNOME
       qgnomeplatform

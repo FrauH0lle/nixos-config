@@ -1,7 +1,5 @@
 { pkgs, config, lib, inputs, ... }:
 
-with lib;
-
 {
   imports = [
     inputs.nixos-hardware.nixosModules.lenovo-thinkpad-x230
@@ -21,6 +19,9 @@ with lib;
       default = "nano";
       emacs.enable = true;
     };
+    hardware = {
+      thinkpadScripts.enable = true;
+    };
   };
   
   # Use the systemd-boot EFI boot loader.
@@ -28,13 +29,13 @@ with lib;
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Latest kernel
-  boot.kernelPackages = mkDefault pkgs.linuxPackages_5_14;
+  boot.kernelPackages = lib.mkDefault pkgs.linuxPackages_5_14;
 
   # User name
   users.users.roland.description = "Roland Goers";
 
   # Hostname
-  networking.hostName = "x230t"; # Define your hostname.
+  networking.hostName = "x230t";
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
@@ -63,6 +64,16 @@ with lib;
   # Enable sound.
   sound.enable = true;
   hardware.pulseaudio.enable = true;
+
+  # Laptop settings
+  services.tlp.settings = {
+    "START_CHARGE_THRESH_BAT0" = 67;
+    "STOP_CHARGE_THRESH_BAT0" = 100;
+  };
+
+  # Hibernation
+  boot.kernelParams = [ "resume_offset=1895246" ];
+  boot.resumeDevice = "/dev/mapper/crypto";
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget

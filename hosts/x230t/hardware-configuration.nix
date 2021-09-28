@@ -16,7 +16,7 @@
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/67aac200-89a5-4e20-8176-58b9efa14ae6";
       fsType = "btrfs";
-      options = [ "subvol=@root" ];
+      options = [ "subvol=@root" "defaults" "noatime" "ssd" "space_cache" "compress=zstd" "commit=120" ];
     };
 
   boot.initrd.luks.devices."crypto".device = "/dev/disk/by-uuid/73795f2b-5a94-4779-bd46-d8e5c33bf760";
@@ -24,19 +24,25 @@
   fileSystems."/home" =
     { device = "/dev/disk/by-uuid/67aac200-89a5-4e20-8176-58b9efa14ae6";
       fsType = "btrfs";
-      options = [ "subvol=@home" ];
+      options = [ "subvol=@home" "defaults" "noatime" "ssd" "space_cache" "compress=zstd" "commit=120" ];
     };
 
   fileSystems."/tmp" =
     { device = "/dev/disk/by-uuid/67aac200-89a5-4e20-8176-58b9efa14ae6";
       fsType = "btrfs";
-      options = [ "subvol=@tmp" ];
+      options = [ "subvol=@tmp" "defaults" "noatime" "ssd" "space_cache" "compress=zstd" "commit=120" ];
     };
 
   fileSystems."/var" =
     { device = "/dev/disk/by-uuid/67aac200-89a5-4e20-8176-58b9efa14ae6";
       fsType = "btrfs";
-      options = [ "subvol=@var" ];
+      options = [ "subvol=@var" "defaults" "noatime" "ssd" "space_cache" "compress=zstd" "commit=120" ];
+    };
+
+  fileSystems."/.swap" =
+    { device = "/dev/disk/by-uuid/67aac200-89a5-4e20-8176-58b9efa14ae6";
+      fsType = "btrfs";
+      options = [ "subvol=@swap" "defaults" "noatime" "ssd" "space_cache" "compress=zstd" "commit=120" ];
     };
 
   fileSystems."/boot" =
@@ -44,6 +50,9 @@
       fsType = "vfat";
     };
 
-  swapDevices = [ ];
+  swapDevices = [{
+    device = "/.swap/swapfile";
+    size = 8192;
+  }];
 
 }

@@ -31,7 +31,7 @@
   };
 
   # Use EurKEY layout in pantheon
-  services.xserver.desktopManager.gnome3.extraGSettingsOverrides = ''
+  services.xserver.desktopManager.pantheon.extraGSettingsOverrides = ''
   [org.gnome.desktop.input-sources]
   sources=[('xkb','eu')]
   show-all-sources=true

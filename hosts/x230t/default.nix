@@ -21,9 +21,22 @@
     };
     hardware = {
       thinkpad-scripts.enable = true;
+      audio.enable = true;
+      bluetooth.enable = true;
+      hardware.sensors.enable = true;
+    };
+    shell = {
+      bash.enable = true;
     };
   };
-  
+
+  # Use EurKEY layout in pantheon
+  services.xserver.desktopManager.gnome3.extraGSettingsOverrides = ''
+  [org.gnome.desktop.input-sources]
+  sources=[('xkb','eu')]
+  show-all-sources=true
+  '';
+
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.configurationLimit = 10;
@@ -35,6 +48,9 @@
   # CPU
   nix.maxJobs = lib.mkDefault 4;
   hardware.cpu.intel.updateMicrocode = true;
+
+  # fstrim
+  services.fstrim.enable = true;
 
   # User name
   users.users.roland.description = "Roland Goers";
@@ -65,10 +81,6 @@
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
-
-  # Enable sound.
-  sound.enable = true;
-  hardware.pulseaudio.enable = true;
 
   # Laptop settings
   services.tlp.settings = {

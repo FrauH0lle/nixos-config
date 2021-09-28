@@ -23,7 +23,7 @@
       thinkpad-scripts.enable = true;
       audio.enable = true;
       bluetooth.enable = true;
-      hardware.sensors.enable = true;
+      sensors.enable = true;
     };
     shell = {
       bash.enable = true;

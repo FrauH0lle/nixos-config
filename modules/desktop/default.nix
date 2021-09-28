@@ -26,7 +26,6 @@ in {
     user.packages = with pkgs; [
       xclip
       xdotool
-      xorg.xwininfo
     ];
 
     fonts = {

@@ -20,16 +20,21 @@
       emacs.enable = true;
     };
     hardware = {
-      thinkpadScripts.enable = true;
+      thinkpad-scripts.enable = true;
     };
   };
   
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.configurationLimit = 10;
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Latest kernel
   boot.kernelPackages = lib.mkDefault pkgs.linuxPackages_5_14;
+
+  # CPU
+  nix.maxJobs = lib.mkDefault 4;
+  hardware.cpu.intel.updateMicrocode = true;
 
   # User name
   users.users.roland.description = "Roland Goers";

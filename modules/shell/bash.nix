@@ -11,7 +11,6 @@ in {
 
   config = mkIf cfg.enable {
     programs.bash = {
-      enable = true;
       enableCompletion = true;
     };
 

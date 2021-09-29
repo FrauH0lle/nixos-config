@@ -10,6 +10,7 @@ in {
 
   config = mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
+      borgbackup
       borgmatic
     ];
     systemd.packages = with pkgs; [

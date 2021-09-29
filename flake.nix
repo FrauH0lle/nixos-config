@@ -34,6 +34,10 @@
       inherit system;
       # Unfree packages
       config.allowUnfree = true;
+      # Displaycal
+      config.permittedInsecurePackages = [
+        "python2.7-Pillow-6.2.2"
+      ];
       overlays = extraOverlays ++ (lib.attrValues self.overlays);
     };
     pkgs  = mkPkgs nixpkgs [ self.overlay ];

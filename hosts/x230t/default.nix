@@ -23,7 +23,11 @@
       thinkpad-scripts.enable = true;
       audio.enable = true;
       bluetooth.enable = true;
+      hp-printer.enable = true;
       sensors.enable = true;
+    };
+    services = {
+      borgmatic.enable = true;
     };
     shell = {
       bash.enable = true;
@@ -40,6 +44,7 @@
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.systemd-boot.configurationLimit = 10;
+  boot.loader.timeout = 1;
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Latest kernel
@@ -48,6 +53,13 @@
   # CPU
   nix.maxJobs = lib.mkDefault 4;
   hardware.cpu.intel.updateMicrocode = true;
+
+  # GPU
+  hardware.opengl.extraPackages = with pkgs; [
+    vaapiIntel
+    libvdpau-va-gl
+    vaapiVdpau
+  ];
 
   # fstrim
   services.fstrim.enable = true;
@@ -96,7 +108,9 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     auto-cpufreq
+    displaycal
     nextcloud-client
+    gnome.simple-scan
   ];
 
   # This value determines the NixOS release from which the default

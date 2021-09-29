@@ -50,6 +50,12 @@
       fsType = "vfat";
     };
 
+  fileSystems."/run/media/roland/SD" =
+    { device = "/dev/disk/by-uuid/9a38d531-f69c-4fbf-86a9-7b83d6b8c5ea";
+      fsType = "ext4";
+      options = [ "defaults" "noatime" "nofail" ];
+    };
+
   swapDevices = [{
     device = "/.swap/swapfile";
     size = 8192;

@@ -24,6 +24,6 @@ in {
 
       (if cfg.inkscape.enable then [
         unstable.inkscape
-      ] else []) ++
+      ] else []);
   };
 }

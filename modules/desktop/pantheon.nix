@@ -25,8 +25,15 @@ in {
     };
     programs.pantheon-tweaks.enable = true;
 
+    # Enable flatpak for AppCenter
+    services.flatpak.enable = true;
+    xdg.portal.enable = true;
+    xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+
     environment.systemPackages = with pkgs; [
       gnome.dconf-editor
+      # AppCenter
+      pantheon.appcenter
       pantheon.elementary-files
       # QPlatformTheme for a better Qt application inclusion in GNOME
       qgnomeplatform

@@ -9,6 +9,16 @@
   # /tmp ourselves. /tmp should be volatile storage!
   boot.cleanTmpDir = lib.mkDefault (!config.boot.tmpOnTmpfs);
 
+  # Networking
+  boot.kernel.sysctl = {
+    "vm.swappiness" = 10;
+    "net.ipv4.tcp_fastopen" = 3;
+    "net.ipv4.tcp_mtu_probing" = 1;
+    "net.core.default_qdisc" = "cake";
+    "net.ipv4.tcp_congestion_control" = "bbr";
+  };
+  boot.kernelModules = [ "tcp_bbr" ];
+
   ## I/O scheduler
   boot.initrd.kernelModules = [ "bfq" ];
   services.udev.extraRules = ''

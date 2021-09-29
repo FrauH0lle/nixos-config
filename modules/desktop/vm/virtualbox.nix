@@ -1,8 +1,3 @@
-# modules/desktop/vm/virtualbox.nix
-#
-# For testing or building software on other OSes. If I find out how to get macOS
-# on qemu/libvirt I'd be happy to leave virtualbox behind.
-
 { options, config, lib, pkgs, ... }:
 
 with lib;
@@ -16,7 +11,7 @@ in {
   config = mkIf cfg.enable {
     virtualisation.virtualbox.host = {
       enable = true;
-      # urg, takes so long to build, but needed for macOS guest
+      # Takes long to build
       # enableExtensionPack = true;
     };
 

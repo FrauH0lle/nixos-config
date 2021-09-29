@@ -96,6 +96,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     auto-cpufreq
+    nextcloud-client
   ];
 
   # This value determines the NixOS release from which the default

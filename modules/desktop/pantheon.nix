@@ -29,6 +29,9 @@ in {
     services.flatpak.enable = true;
     xdg.portal.enable = true;
     xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    # URLs
+    # flatpak remote-add --if-not-exists appcenter https://flatpak.elementary.io/repo.flatpakrepo
+    # flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
     environment.systemPackages = with pkgs; [
       gnome.dconf-editor

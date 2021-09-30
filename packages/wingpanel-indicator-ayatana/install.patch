@@ -1,0 +1,24 @@
+From 7b032cf2f1be5285ce97eec9dcdc240905b12abc Mon Sep 17 00:00:00 2001
+From: Roland Goers <roland.goers@posteo.de>
+Date: Wed, 29 Sep 2021 17:21:55 +0200
+Subject: [PATCH] udpate
+
+---
+ meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index 4aeab2b..fdeec83 100644
+--- a/meson.build
++++ b/meson.build
+@@ -26,7 +26,7 @@ dependencies = {
+ }
+
+ indicator_name = 'ayatana'
+-indicator_dir  = dependencies['wingpanel'].get_pkgconfig_variable('indicatorsdir')
++indicator_dir  = join_paths(get_option('prefix'), 'lib/wingpanel')
+
+ # ----------------------------------------------------------------------------------------------------------------------
+ # Bindings:
+--
+2.33.0

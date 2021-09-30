@@ -91,8 +91,10 @@
   # Configure keymap in X11
   services.xserver.layout = "eu";
 
-  # Enable CUPS to print documents.
-  # services.printing.enable = true;
+  # services.redshift = {
+  #   enable = true;
+  #   provider = "geoclue2";
+  # };
 
   # Laptop settings
   services.tlp.settings = {

@@ -40,16 +40,6 @@ in {
       ];
     };
 
-    # Try really hard to get QT to respect my GTK theme.
-    env.GTK_DATA_PREFIX = [ "${config.system.path}" ];
-    env.QT_QPA_PLATFORMTHEME = "gnome";
-    env.QT_STYLE_OVERRIDE = "kvantum";
-
-    services.xserver.displayManager.sessionCommands = ''
-      # GTK2_RC_FILES must be available to the display manager.
-      export GTK2_RC_FILES="$XDG_CONFIG_HOME/gtk-2.0/gtkrc"
-    '';
-
     # Clean up leftovers, as much as we can
     system.userActivationScripts.cleanupHome = ''
       pushd "${config.user.home}"

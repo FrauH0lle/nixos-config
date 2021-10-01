@@ -66,6 +66,7 @@ in {
       # For a better Qt application inclusion
       qt5ct
       libsForQt5.qtstyleplugins
+      my.ayatana-indicator-application
     ];
 
     # Try really hard to get QT to respect my GTK theme.

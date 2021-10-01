@@ -11,7 +11,11 @@ stdenv.mkDerivation rec {
     sha256 = "zgEGBmrUlrCQimxBu+n1FZfuM6LxogAW8++b6Ifk4vg=";
   };
 
-  patches = [ ./install.patch ];
+  patches = [
+    ./install.patch
+    ./0001-use-ayatana.patch
+    ./0001-add-vapi.patch
+  ];
 
   nativeBuildInputs = with pkgs; [
     libxml2
@@ -23,32 +27,8 @@ stdenv.mkDerivation rec {
 
   buildInputs = with pkgs; [
     pantheon.granite
-    (libindicator-gtk3.overrideAttrs (oldAttrs: rec {
-      versionMajor = "16.10";
-      versioMinor = "1";
-      src = fetchbzr {
-        url = "https://code.launchpad.net/~indicator-applet-developers/libindicator/trunk.16.10";
-        rev = "539";
-        sha256 = "axnmiDchVTXvi8XVKIYsjxQuPuXR4Y242dupEbUcK9U=";
-      };
-      postPatch = "";
-      preConfigure = ''
-        ./autogen.sh
-        substituteInPlace configure \
-        --replace 'LIBINDICATOR_LIBS+="$LIBM"' 'LIBINDICATOR_LIBS+=" $LIBM"'
-        for f in {build-aux/ltmain.sh,configure,m4/libtool.m4}; do
-            substituteInPlace $f\
-        --replace /usr/bin/file ${file}/bin/file
-        done
-        '';
-    }))
-    (indicator-application-gtk3.overrideAttrs (oldAttrs: rec {
-      postPatch = ''
-      ${oldAttrs.postPatch}
-      substituteInPlace data/indicator-application.desktop.in \
-      --replace "OnlyShowIn=Unity;GNOME;" "OnlyShowIn=Unity;GNOME;Pantheon;"
-      '';
-    }))
+    libayatana-indicator-gtk3
+    my.ayatana-indicator-application
     pantheon.wingpanel
   ];
 

@@ -1,0 +1,25 @@
+From 99685d50f3d90d2a95a157343fe933b4abb70b86 Mon Sep 17 00:00:00 2001
+From: Roland Goers <roland.goers@posteo.de>
+Date: Fri, 1 Oct 2021 13:38:14 +0200
+Subject: [PATCH] use ayatana
+
+---
+ meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index fdeec83..dbbc234 100644
+--- a/meson.build
++++ b/meson.build
+@@ -21,7 +21,7 @@ sources = [
+     endif
+ dependencies = {
+     'granite':    dependency('granite'),
+-    'indicator3': dependency('indicator3-0.4'),
++    'indicator3': dependency('ayatana-indicator3-0.4'),
+     'wingpanel': wingpanel
+ }
+ 
+-- 
+2.33.0
+
